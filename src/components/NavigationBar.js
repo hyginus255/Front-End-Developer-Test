@@ -5,7 +5,7 @@ import Logo from '../assets/logo.png';
 
 const Styles = styled.div`
     .container{
-        padding:20px;
+        padding:8px;
         font-family: 'Poppins', sans-serif;
     }
     .navbar{

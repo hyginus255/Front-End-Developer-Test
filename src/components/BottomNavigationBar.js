@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Col, Nav, Form, FormControl, Button, InputGroup} from 'react-bootstrap';
+import {Container, Nav, Form, FormControl, Button, InputGroup} from 'react-bootstrap';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -30,7 +30,14 @@ const Styles = styled.div`
         font-weight: bold;
         text-transform:uppercase;
         font-size:12px;
-        padding:
+        flex-grow: 0;
+    }
+
+    @media(max-width:480px){
+        
+        .nav-link{
+            flex-grow: 1;
+        }
     }
 
     .form-control{
