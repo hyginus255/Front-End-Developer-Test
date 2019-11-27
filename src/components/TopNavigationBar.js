@@ -2,6 +2,7 @@ import React from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLock } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF , faTwitter, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 const Styles = styled.div`
@@ -33,7 +34,7 @@ export const TopNavigationBar = () => (
          <Container fluid={true}>
              <Container>
                  <Row>
-                    <Col md={4}>
+                    <Col md={4} className="d-flex align-items-md-start">
                         <a href="https://www.facebook.com" className="social-icons" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faFacebookF} /></a>
                         <a href="https://twitter.com" className="social-icons" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faTwitter} /></a>
                         <a href="https://www.instagram.com" className="social-icons" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faInstagram} /></a>
@@ -41,9 +42,9 @@ export const TopNavigationBar = () => (
                         <span style={{margin:'0px 4px'}}>Contact Us</span>
                         <span style={{margin:'0px 4px'}}>Donations</span>
                     </Col>
-                    <Col md={{span:4, offset:4}}>
+                    <Col md={{span:4, offset:4}} className="d-flex align-items-md-start">
                         <span style={{color:'#FFFFFF', marginRight:'8px'}}>Currency : <span style={{color:'#FDC624'}}>USD</span></span>
-                        <a href="/register" className="social-icons" target="_blank" rel="noopener noreferrer"><span style={{color:'#FDC624'}}><FontAwesomeIcon icon={faYoutube} /> Sign Up</span></a> or 
+                        <a href="/register" className="social-icons" target="_blank" rel="noopener noreferrer"><span style={{color:'#FDC624'}}><FontAwesomeIcon icon={faLock} className="mx-2"/> Sign Up</span></a> or 
                         <a href="/login" className="social-icons" target="_blank" rel="noopener noreferrer"><span style={{color:'#FFFFFF'}}>Login</span></a>
                     </Col>                    
                  </Row>

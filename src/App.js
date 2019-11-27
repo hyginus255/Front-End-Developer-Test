@@ -1,14 +1,19 @@
 import React from 'react';
+import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {Home} from './Home';
 import {About} from  './About';
 import {DefaultNotFound} from  './DefaultNotFound';
 import {TopNavigationBar} from './components/TopNavigationBar';
+import {NavigationBar} from './components/NavigationBar';
+import {BottomNavigationBar} from './components/BottomNavigationBar';
 
 function App() {
   return (
     <React.Fragment>
-      <TopNavigationBar></TopNavigationBar>
+        <TopNavigationBar></TopNavigationBar>
+        <NavigationBar></NavigationBar>
+        <BottomNavigationBar></BottomNavigationBar>      
       <Router> 
         <Switch>
           <Route exact path="/" component={Home}/>
