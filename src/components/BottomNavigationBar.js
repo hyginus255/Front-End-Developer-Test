@@ -13,13 +13,6 @@ const Styles = styled.div`
         padding:0px;
     }
 
-    @media(min-width: 780px){
-        .nav{
-            display:flex;
-            justify-content: flex-start;
-        }
-    }
-
     .nav a:hover{
         background-color: #D1D1D3;
     }
@@ -30,14 +23,7 @@ const Styles = styled.div`
         font-weight: bold;
         text-transform:uppercase;
         font-size:12px;
-        flex-grow: 0;
-    }
-
-    @media(max-width:480px){
-        
-        .nav-link{
-            flex-grow: 1;
-        }
+        flex-grow: 1;
     }
 
     .form-control{
@@ -46,6 +32,7 @@ const Styles = styled.div`
         font-size:14px;
         border : 1px solid #ECECEC;
         margin:0;
+        border-radius:0;
     }
 
     .btn{
@@ -55,10 +42,30 @@ const Styles = styled.div`
         border-right: 1px solid #ECECEC;
         font-size:14px;
         margin:0;
+        border-radius:0;
     }
 
     .btn:hover{
         background-color: #D1D1D3;
+    }
+
+    @media(max-width:480px){
+        
+        .nav-link{
+            // flex-grow: 1;
+        }
+
+        .container{
+            padding:0px;
+            display:none!important;
+        }
+    }
+
+    @media(min-width: 780px){
+        .nav{
+            display:flex;
+            justify-content: flex-start;
+        }
     }
 
 `;
@@ -79,11 +86,10 @@ export const BottomNavigationBar = () => (
                 <Nav.Link href="#link">nation league</Nav.Link>
                 <Nav.Link href="#link">archive</Nav.Link>
                 <Form inline>
-                <InputGroup>
-                    <FormControl type="text" placeholder="Search" />
-                    <Button><FontAwesomeIcon icon={faSearch} /></Button>
-                </InputGroup>
-                    
+                    <InputGroup>
+                        <FormControl type="text" placeholder="Search" />
+                        <Button><FontAwesomeIcon icon={faSearch} /></Button>
+                    </InputGroup>
                 </Form>
             </Nav>
             </Container>

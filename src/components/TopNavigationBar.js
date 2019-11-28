@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Col} from 'react-bootstrap';
+import {Container, Row, Col, Nav} from 'react-bootstrap';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock } from '@fortawesome/free-solid-svg-icons'
@@ -7,25 +7,31 @@ import { faFacebookF , faTwitter, faInstagram, faYoutube } from '@fortawesome/fr
 
 const Styles = styled.div`
 
-  .container-fluid{
-      background-color:#25252F;
-      color: #FFFFFF;
-      padding: 7px;
-      text-align:center;
-      font-size: 12px;
-  }
+    .container-fluid{
+        background-color:#25252F;
+        color: #FFFFFF;
+        padding: 7px;
+        text-align:center;
+        font-size: 12px;
+    }
 
-  .social-icons{
-      padding:2px 4px;
-      color:#808084;
-      font-family: 'Poppins', sans-serif;
-  }
+    .nav-link{
+        padding:2px 5px;
+        color:#808084;
+        font-family: 'Poppins', sans-serif;
+    }
 
-  .social-icons:hover{
-      color:#FFFFFF;
-      cursor:pointer;
-      text-decoration:none;
-  }
+    .nav-link:hover{
+        color:#FFFFFF;
+        cursor:pointer;
+        text-decoration:none;
+    }
+
+    @media(max-width:480px){
+        .content-right, .content-left{
+            justify-content: center !important;
+        }
+    }
 
 `;
 
@@ -34,18 +40,22 @@ export const TopNavigationBar = () => (
          <Container fluid={true}>
              <Container>
                  <Row>
-                    <Col md={4} className="d-flex align-items-md-start">
-                        <a href="https://www.facebook.com" className="social-icons" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faFacebookF} /></a>
-                        <a href="https://twitter.com" className="social-icons" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faTwitter} /></a>
-                        <a href="https://www.instagram.com" className="social-icons" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faInstagram} /></a>
-                        <a href="https://www.youtube.com" className="social-icons" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faYoutube} /></a>
-                        <span style={{margin:'0px 4px'}}>Contact Us</span>
-                        <span style={{margin:'0px 4px'}}>Donations</span>
+                    <Col md={4}>
+                        <Row className="align-items-center content-left">
+                            <Nav.Link href="https://www.facebook.com"><FontAwesomeIcon icon={faFacebookF} /></Nav.Link>
+                            <Nav.Link href="https://twitter.com"><FontAwesomeIcon icon={faTwitter} /></Nav.Link>
+                            <Nav.Link href="https://www.instagram.com"><FontAwesomeIcon icon={faInstagram} /></Nav.Link>
+                            <Nav.Link href="https://www.youtube.com"><FontAwesomeIcon icon={faYoutube} /></Nav.Link>
+                            <Nav.Link href="/#" style={{color:'#FFFFFF'}}>| Contact Us |</Nav.Link>
+                            <Nav.Link href="/#" style={{color:'#FFFFFF'}}>Donations</Nav.Link>
+                        </Row>
                     </Col>
-                    <Col md={{span:4, offset:4}} className="d-flex align-items-md-start">
-                        <span style={{color:'#FFFFFF', marginRight:'8px'}}>Currency : <span style={{color:'#FDC624'}}>USD</span></span>
-                        <a href="/register" className="social-icons" target="_blank" rel="noopener noreferrer"><span style={{color:'#FDC624'}}><FontAwesomeIcon icon={faLock} className="mx-2"/> Sign Up</span></a> or 
-                        <a href="/login" className="social-icons" target="_blank" rel="noopener noreferrer"><span style={{color:'#FFFFFF'}}>Login</span></a>
+                    <Col md={{span:4, offset:4}}>
+                        <Row className="align-items-center justify-content-end content-right">
+                            <Nav.Link href="/#" style={{color:'#FFFFFF'}}>| Currency : <span style={{color:'#FDC624'}}>USD</span> |</Nav.Link>
+                            <Nav.Link href="/#" style={{color:'#FDC624'}}><FontAwesomeIcon icon={faLock} className="mx-1"/> Sign Up</Nav.Link>
+                            <Nav.Link href="/#" style={{color:'#FFFFFF'}}>or Login</Nav.Link>
+                        </Row>
                     </Col>                    
                  </Row>
              </Container>
