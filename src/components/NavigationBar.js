@@ -1,51 +1,70 @@
 import React from 'react';
-import {Container, Row, Col, Nav, Navbar} from 'react-bootstrap';
+import {Container, Nav, Navbar} from 'react-bootstrap';
 import styled from 'styled-components';
 import Logo from '../assets/logo.png';
 
 const Styles = styled.div`
+
     .container{
-        padding:8px;
-        font-family: 'Poppins', sans-serif;
+        padding:0px;
     }
-    .navbar{
-        width:100%;
+
+    .navbar-brand img{
+        height: 70px;
+        width: auto;
+    }
+
+    .navbar h5{
+        color:red;
+        margin-bottom:0px;
+        color: #000000;
+        font-weight: 500;
+        font-size: 18px;
+    }
+
+    .navbar-brand{
+        margin-right:5px;
     }
 
     .navbar-light .navbar-brand , .navbar-light .navbar-nav .nav-link{
-        color:#23262B;
-        font-weight: bold;
-        text-transform:uppercase;
-        font-size:13px;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        color: #23262B;
     }
+
+    @media(max-width:480px){
+        .container{
+            padding:0px;
+        }
+        .navbar-nav{
+            padding: 5px;
+        }
+    }
+
 `;
 
 export const NavigationBar = () => (
     <Styles>
         <Container>
-            <Row className="d-flex justify-content-center">
-                <Col md={1} xs={12} className="d-flex justify-content-center px-2">
-                    <img src={Logo} style={{height:'70px', width:'auto'}} alt={`Logo`}></img>
-                </Col>
-                <Col md={11} xs={12} className="d-flex align-items-center">
-                    <Navbar expand="lg">
-                        <Navbar.Brand href="#home" className="mr-5">BW Football Club</Navbar.Brand>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-                        <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav className="mr-auto">
-                                <Nav.Link href="#home">Home</Nav.Link>
-                                <Nav.Link href="#link">News</Nav.Link>
-                                <Nav.Link href="#link">News</Nav.Link>
-                                <Nav.Link href="#link">Results</Nav.Link>
-                                <Nav.Link href="#link">Tables</Nav.Link>
-                                <Nav.Link href="#link">Tips</Nav.Link>
-                                <Nav.Link href="#link">Features</Nav.Link>
-                                <Nav.Link href="#link">About</Nav.Link>
-                            </Nav>
-                        </Navbar.Collapse>
-                    </Navbar>
-                </Col>
-            </Row>
+            <Navbar collapseOnSelect expand="lg">
+                <Navbar.Brand href="#home">
+                    <img src={Logo} alt={`Logo`}></img>
+                </Navbar.Brand>
+                <h5>BW FOOTBALL CLUB</h5>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="ml-auto">
+                        <Nav.Link href="#features">Home</Nav.Link>
+                        <Nav.Link href="#pricing">News</Nav.Link>
+                        <Nav.Link href="#pricing">Results</Nav.Link>
+                        <Nav.Link href="#pricing">Tables</Nav.Link>
+                        <Nav.Link href="#pricing">Tips</Nav.Link>
+                        <Nav.Link href="#pricing">features</Nav.Link>
+                        <Nav.Link href="#pricing">about</Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
         </Container>
     </Styles>
 );

@@ -8,14 +8,19 @@ import {TopNavigationBar} from './components/TopNavigationBar';
 import {NavigationBar} from './components/NavigationBar';
 import {BottomNavigationBar} from './components/BottomNavigationBar';
 import {Banner} from './components/Banner';
+import {TopFooter} from './components/TopFooter';
+import {BottomFooter} from './components/BottomFooter';
 
 function App() {
   return (
+
     <React.Fragment>
-        <TopNavigationBar></TopNavigationBar>
-        <NavigationBar></NavigationBar>
-        <BottomNavigationBar></BottomNavigationBar>      
-        <Banner></Banner>      
+
+      <TopNavigationBar></TopNavigationBar>
+      <NavigationBar></NavigationBar>
+      <BottomNavigationBar></BottomNavigationBar>      
+      <Banner></Banner>  
+        
       <Router> 
         <Switch>
           <Route exact path="/" component={Home}/>
@@ -23,8 +28,14 @@ function App() {
           <Route component={DefaultNotFound}/>
         </Switch>
       </Router>
-    </React.Fragment>
+
+      <TopFooter></TopFooter>  
+      <BottomFooter></BottomFooter>  
+
+    </React.Fragment>  
+    
   );
+
 }
 
 export default App;
