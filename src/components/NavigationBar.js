@@ -31,6 +31,7 @@ const Styles = styled.div`
         font-weight: 600;
         font-size: 13px;
         color: #23262B;
+        text-transform : uppercase;
     }
 
     @media(max-width:480px){
@@ -48,7 +49,7 @@ export const NavigationBar = () => (
     <Styles>
         <Container>
             <Navbar collapseOnSelect expand="lg">
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href="/">
                     <img src={Logo} alt={`Logo`}></img>
                 </Navbar.Brand>
                 <h5>BW FOOTBALL CLUB</h5>
