@@ -77,9 +77,9 @@ export const BottomNavigationBar = () => (
             <Container>
             <Nav>
                 <Nav.Link href="#home">Liga bbva</Nav.Link>
-                <Nav.Link href="#link">uefa</Nav.Link>
-                <Nav.Link href="#link">epl</Nav.Link>
-                <Nav.Link href="#link">super cup</Nav.Link>
+                <Nav.Link href="/tables/CL">uefa</Nav.Link>
+                <Nav.Link href="/tables/PL">epl</Nav.Link>
+                <Nav.Link href="/tables/WLC">super cup</Nav.Link>
                 <Nav.Link href="#link">world cup</Nav.Link>
                 <Nav.Link href="#link">npl</Nav.Link>
                 <Nav.Link href="#link">Features</Nav.Link>
