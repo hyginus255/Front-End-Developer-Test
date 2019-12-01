@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {Container, Alert, Row, Col, Table, Nav} from 'react-bootstrap';
+import {Container, Row, Col, Table, Nav} from 'react-bootstrap';
 import styled from 'styled-components';
 
 
@@ -24,7 +24,7 @@ class Tables extends React.Component {
     //calls the endpoint for a competition based on competition code and then update the state.
     getTables = () => {
         axios
-        .get("https://api.football-data.org/v2/competitions/" + this.state.code + "/standings?standingType=HOME", {
+        .get(`https://api.football-data.org/v2/competitions/${this.state.code}/standings?standingType=HOME`, {
             headers: {'X-Auth-Token': '770c55fbb47141f785e8bcb3fe1b40a7'}
         })
         .then(
@@ -46,24 +46,26 @@ class Tables extends React.Component {
     }
 
     render(){
-        const {data,isLoaded,code} = this.state
+        const {data,isLoaded,code,error} = this.state
         return(
             <Styles>
                 <Container className="py-5">
-                    <Col md={12} className="mb-3 p-0">
-                        <Nav defaultActiveKey="/home" as="ul">
+                    <Col md={12} className="mb-3 p-0 border">
+                        <Nav defaultActiveKey="#/" as="ul">
                             <Nav.Item as="li">
                                 <Nav.Link href={`/tables/${code}`} className="active">Tables</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="/about">Features</Nav.Link>
+                                <Nav.Link href={`/fixtures/${code}`}>Features</Nav.Link>
                             </Nav.Item>
-
+                            {/* <Nav.Item>
+                                <Nav.Link href={`/fixtures/${code}`}>Teams</Nav.Link>
+                            </Nav.Item> */}
                         </Nav>
                     </Col>
                     {isLoaded ? 
                         data.map(result => (
-                            <Row>
+                            <Row key={result.group}>
                             <Col md={12}>
                                 <h2 className="group-heading p-3"><strong>{result.stage}</strong> : {result.group}</h2>
                                 <Table  responsive>
@@ -84,9 +86,9 @@ class Tables extends React.Component {
                                     <tbody>
                                         {
                                             result.table.map(table=>(
-                                                <tr>
+                                                <tr key={table.position}>
                                                     <td>{table.position}</td>
-                                                    <td><img src={table.team.crestUrl} width={20}/></td>
+                                                    <td><img src={table.team.crestUrl} width={20} alt="clud_img"/></td>
                                                     <td>{table.team.name}</td>
                                                     <td>{table.playedGames}</td>
                                                     <td>{table.won}</td>
@@ -106,7 +108,10 @@ class Tables extends React.Component {
                         ))
                     
                     : 
-                        <p style={{textAlign:'center',color:'#b89120'}}>Loading...</p>
+                        error ? 
+                            <p style={{textAlign:'center',color:'#b89120'}}>Kindly check your network or refresh.</p> 
+                        : 
+                            <p style={{textAlign:'center',color:'#b89120'}}>Loading...</p>
                     }
                 </Container>
             </Styles>
@@ -128,9 +133,9 @@ const Styles = styled.div`
         text-transform: uppercase;
         font-size:14px;
         padding: 5px 40px;
-        border-right: 1px solid #688090;
         font-weight: 900;
-        margin:2px;
+        margin:0px;
+        letter-spacing: 0.0357143em;
     }
 
     .active{
@@ -141,11 +146,14 @@ const Styles = styled.div`
     .nav-link:hover{
         background-color: #688090;
         color: #fff;
+        border-right:1px #FFFFFF solid;
+        border-left:1px #FFFFFF solid;
     }
 
     .group-heading{
         font-size:13px;  
-        color: #fff;
-        background-color: #25252F;
+        color: #23262B;
+        text-align : center;
+        background-color: #68809085;;
     }
 `;

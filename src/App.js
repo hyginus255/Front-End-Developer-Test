@@ -1,16 +1,16 @@
 import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import {Home} from './Home';
-import {About} from  './About';
-import {DefaultNotFound} from  './DefaultNotFound';
+import {Home} from './pages/Home';
+import {DefaultNotFound} from  './pages/DefaultNotFound';
 import {TopNavigationBar} from './components/TopNavigationBar';
 import {NavigationBar} from './components/NavigationBar';
 import {BottomNavigationBar} from './components/BottomNavigationBar';
 import {Banner} from './components/Banner';
 import {TopFooter} from './components/TopFooter';
 import {BottomFooter} from './components/BottomFooter';
-import Tables from './App/Tables.js/Tables';
+import Tables from './App/tables/Tables';
+import Fixtures from './App/fixtures/Fixtures';
 
 function App() {
   return (
@@ -26,8 +26,8 @@ function App() {
       <Router> 
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route path="/about" component={About}/>
           <Route path="/tables/:code" component={Tables}/>
+          <Route path="/fixtures/:code" component={Fixtures}/>
           <Route component={DefaultNotFound}/>
         </Switch>
       </Router>
