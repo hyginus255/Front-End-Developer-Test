@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import {Container, Row, Col, Table, Nav} from 'react-bootstrap';
-import styled from 'styled-components';
-
+import {Container, Row, Col, Table} from 'react-bootstrap';
+import {Link} from "react-router-dom";
+import {Styles} from "./Styles";
 
 
 class Tables extends React.Component {
@@ -51,17 +51,10 @@ class Tables extends React.Component {
             <Styles>
                 <Container className="py-5">
                     <Col md={12} className="mb-3 p-0 border">
-                        <Nav defaultActiveKey="#/" as="ul">
-                            <Nav.Item as="li">
-                                <Nav.Link href={`/tables/${code}`} className="active">Tables</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link href={`/fixtures/${code}`}>Features</Nav.Link>
-                            </Nav.Item>
-                            {/* <Nav.Item>
-                                <Nav.Link href={`/fixtures/${code}`}>Teams</Nav.Link>
-                            </Nav.Item> */}
-                        </Nav>
+                        <Row>
+                            <Link to={`/tables/${code}`} className="nav-link active">tables</Link>
+                            <Link to={`/fixtures/${code}`} className="nav-link">Fixtures</Link>
+                        </Row>
                     </Col>
                     {isLoaded ? 
                         data.map(result => (
@@ -122,38 +115,3 @@ class Tables extends React.Component {
 export default Tables;
 
 
-const Styles = styled.div`
-    tr, th, td{
-        border:none!important;
-    }
-
-    .nav-link{
-        color:#688090;
-        text-decoration:none;
-        text-transform: uppercase;
-        font-size:14px;
-        padding: 5px 40px;
-        font-weight: 900;
-        margin:0px;
-        letter-spacing: 0.0357143em;
-    }
-
-    .active{
-        background-color:#688090;
-        color:#ffff;
-    }
-
-    .nav-link:hover{
-        background-color: #688090;
-        color: #fff;
-        border-right:1px #FFFFFF solid;
-        border-left:1px #FFFFFF solid;
-    }
-
-    .group-heading{
-        font-size:13px;  
-        color: #23262B;
-        text-align : center;
-        background-color: #68809085;;
-    }
-`;

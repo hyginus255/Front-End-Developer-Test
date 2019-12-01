@@ -1,39 +1,9 @@
 import React from 'react';
 import {Container, Row, Col, Nav} from 'react-bootstrap';
-import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF , faTwitter, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
-
-const Styles = styled.div`
-
-    .container-fluid{
-        background-color:#25252F;
-        color: #FFFFFF;
-        padding: 7px;
-        text-align:center;
-        font-size: 12px;
-    }
-
-    .nav-link{
-        padding:2px 5px;
-        color:#808084;
-        font-family: 'Poppins', sans-serif;
-    }
-
-    .nav-link:hover{
-        color:#FFFFFF;
-        cursor:pointer;
-        text-decoration:none;
-    }
-
-    @media(max-width:480px){
-        .content-right, .content-left{
-            justify-content: center !important;
-        }
-    }
-
-`;
+import {Styles} from './Styles';
 
 export const TopNavigationBar = () => (
     <Styles>
@@ -42,10 +12,10 @@ export const TopNavigationBar = () => (
                  <Row>
                     <Col md={4}>
                         <Row className="align-items-center content-left">
-                            <Nav.Link href="https://www.facebook.com"><FontAwesomeIcon icon={faFacebookF} /></Nav.Link>
-                            <Nav.Link href="https://twitter.com"><FontAwesomeIcon icon={faTwitter} /></Nav.Link>
-                            <Nav.Link href="https://www.instagram.com"><FontAwesomeIcon icon={faInstagram} /></Nav.Link>
-                            <Nav.Link href="https://www.youtube.com"><FontAwesomeIcon icon={faYoutube} /></Nav.Link>
+                            <Nav.Link href="https://www.facebook.com" target="_blank"><FontAwesomeIcon icon={faFacebookF} /></Nav.Link>
+                            <Nav.Link href="https://twitter.com" target="_blank"><FontAwesomeIcon icon={faTwitter} /></Nav.Link>
+                            <Nav.Link href="https://www.instagram.com" target="_blank"><FontAwesomeIcon icon={faInstagram} /></Nav.Link>
+                            <Nav.Link href="https://www.youtube.com" target="_blank"><FontAwesomeIcon icon={faYoutube} /></Nav.Link>
                             <Nav.Link href="/#" style={{color:'#FFFFFF'}}>| Contact Us |</Nav.Link>
                             <Nav.Link href="/#" style={{color:'#FFFFFF'}}>Donations</Nav.Link>
                         </Row>

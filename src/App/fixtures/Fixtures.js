@@ -1,9 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import {Container, Row, Col, Nav} from 'react-bootstrap';
-import styled from 'styled-components';
+import {Container, Row, Col} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarAlt , faClock, faLink} from '@fortawesome/free-solid-svg-icons'
+import { faCalendarAlt , faClock, faLink} from '@fortawesome/free-solid-svg-icons';
+import {Link} from "react-router-dom";
+import {Styles} from "./Styles";
 
 
 
@@ -15,7 +16,7 @@ class Fixtures extends React.Component {
             error: null,
             isLoaded: false,
             code : props.match.params.code,
-            data: []
+            data: [],
         };
     }
 
@@ -52,22 +53,15 @@ class Fixtures extends React.Component {
      
 
     render(){
-        const {data,isLoaded,code} = this.state
+        const {data,isLoaded,code,error} = this.state
         return(
             <Styles>
                 <Container className="py-5">
                     <Col md={12} className="mb-3 p-0 border">
-                        <Nav defaultActiveKey="#/" as="ul">
-                            <Nav.Item as="li">
-                                <Nav.Link href={`/tables/${code}`}>Tables</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link href={`/fixtures/${code}`} className="active">Features</Nav.Link>
-                            </Nav.Item>
-                            {/* <Nav.Item>
-                                <Nav.Link href={`/fixtures/${code}`}>Teams</Nav.Link>
-                            </Nav.Item> */}
-                        </Nav>
+                        <Row>
+                            <Link to={`/tables/${code}`} className="nav-link">tables</Link>
+                            <Link to={`/fixtures/${code}`} className="nav-link active">Fixtures</Link>
+                        </Row>
                     </Col>
                     {isLoaded ? 
                         <Container>
@@ -98,7 +92,10 @@ class Fixtures extends React.Component {
                             </Row>
                         </Container>
                     : 
-                        <p style={{textAlign:'center',color:'#b89120'}}>Loading...</p>
+                    error ? 
+                    <p style={{textAlign:'center',color:'#b89120'}}>Kindly check your network or refresh.</p> 
+                : 
+                    <p style={{textAlign:'center',color:'#b89120'}}>Loading...</p>
                     }
                 </Container>
             </Styles>
@@ -107,40 +104,3 @@ class Fixtures extends React.Component {
 }
 
 export default Fixtures;
-
-
-const Styles = styled.div`
-
-    .nav-link{
-        color:#688090;
-        text-decoration:none;
-        text-transform: uppercase;
-        font-size:14px;
-        padding: 5px 40px;
-        font-weight: 900;
-        margin:0px;
-        letter-spacing: 0.0357143em;
-    }
-
-    .active{
-        background-color:#688090;
-        color:#ffff;
-    }
-
-    .nav-link:hover{
-        background-color: #688090;
-        color: #fff;
-        border-right:1px #FFFFFF solid;
-        border-left:1px #FFFFFF solid;
-    }
-
-    .fixture-container{
-        border: 0.5px solid #E5E5E5;
-        background-color: #FFFFFF;
-        padding:15px;
-        margin:0px;
-        font-size: 13px;
-        color: #23262B;
-        font-weight:300px;s
-    }
-`;
