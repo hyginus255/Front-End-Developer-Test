@@ -9,7 +9,7 @@ I tried as much to split the application into various component and made comment
 
 One other major implementation was consuming the API. A click on one of the Competition Link will fetch some basic features of the competition like tables and fixtures. 
 
-Github was my major Resource Management Tool. I was able to host the project on Heroku :  https://bytework-football-reactapp.herokuapp.com
+Github was my major Resource Management Tool. I was able to host the project on Heroku :  https://bytework-football-react-app.herokuapp.com/
 
 The below GIF shows the functionality of the Project.
 
