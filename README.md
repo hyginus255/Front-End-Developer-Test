@@ -7,7 +7,7 @@ I was able to implemted the Figma design using React Boostrap and Styled Compone
 
 I tried as much to split the application into various component and made comments where necessary in my code.
 
-One other major implementation was consuming the API. A click on one of the Competion Link will fetch some basic features of the competition like tables and fixtures. 
+One other major implementation was consuming the API. A click on one of the Competition Link will fetch some basic features of the competition like tables and fixtures. 
 
 Github was my major Resource Management Tool. I was able to host the project on Heroku :  https://bytework-football-reactapp.herokuapp.com
 
@@ -16,7 +16,7 @@ The below GIF shows the functionality of the Project.
 [![Demo CountPages alpha](https://j.gifs.com/YWYX39.gif)](https://youtu.be/m7Jf5kNR8R0)
 
 ## How long did it take?
-I was time constraint because of the tasks in my current place of work. I spent 2hours daily for a period of 5 days working on the application.
+There was time constraint because of the tasks in my current place of work. I spent 2hours daily for a period of 5 days working on the application.
 
 ## Which part was the hardest to implement?
 It's an interesting project, I really did not find any part difficult to implement. This is because I have some experience building React Aplications.
