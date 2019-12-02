@@ -15,11 +15,11 @@ export const BottomNavigationBar = () => (
                     <Link to="/tables/PL" className="nav-link">epl</Link>
                     <Link to="/tables/WLC" className="nav-link">super cup</Link>
                     <Link to="/" className="nav-link">Liga bbva</Link>
-                    <Link to="#link" className="nav-link">world cup</Link>
-                    <Link to="#link" className="nav-link">npl</Link>
-                    <Link to="#link" className="nav-link">Features</Link>
-                    <Link to="#link" className="nav-link">nation league</Link>
-                    <Link to="#link" className="nav-link">archive</Link>
+                    <Link to="/" className="nav-link">world cup</Link>
+                    <Link to="/" className="nav-link">npl</Link>
+                    <Link to="/" className="nav-link">Features</Link>
+                    <Link to="/" className="nav-link">nation league</Link>
+                    <Link to="/" className="nav-link">archive</Link>
                     <Form inline>
                         <InputGroup>
                             <FormControl type="text" placeholder="Search" />
