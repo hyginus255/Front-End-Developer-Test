@@ -1,9 +1,9 @@
 # Front-End-Developer-Test
 
 ## A brief description of your project.
-The project was quite an interesting and challenging one. I implemented this using React Js and there are couples of libraries I installed to help me with the challenge. I installed React Bootstrap and Styled Component for the design, React Router for managing my routes, Axios for my API Calls and React Fontawesome for font management.
+The project was quite an interesting one. I implemented this using React Js and there are couples of libraries I installed to help me with the challenge. I installed React Bootstrap and Styled Component for the design, React Router for managing my routes, Axios for my API Calls and React Fontawesome for font management.
 
-I was able to implemted the Figma design using React Boostrap and Styled Component. I also ensured that my design was responsive across different devices using React Boostrap Flex and Media Query. 
+I was able to implement the Figma design using React Boostrap and Styled Component. I also ensured that my design was responsive across different devices using React Boostrap Flex and Media Query. 
 
 I tried as much to split the application into various component and made comments where necessary in my code.
 
