@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Container, Row, Col, Table} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import {Styles} from "./Styles";
+import {Banner} from '../../components/banner/Banner';
 
 
 class Tables extends React.Component {
@@ -13,7 +14,8 @@ class Tables extends React.Component {
             error: null,
             isLoaded: false,
             code : props.match.params.code,
-            data: []
+            data: [],
+            competition : {},
         };
     }
 
@@ -32,13 +34,14 @@ class Tables extends React.Component {
                 this.setState({
                     error: null,
                     isLoaded: true,
-                    data : result.data.standings
+                    data : result.data.standings,
+                    competition : {competionName : `${result.data.competition.name}` , competitionCode : `${result.data.competition.code}`, competitionLink : `tables/${result.data.competition.code}` , feature : 'Tables'}
                 });
             }
         )
         .catch(err => {
             this.setState({
-                error: 'Cannot connect to api'
+                error: 'Cannot connect to API.'
             })
             console.log(err);
             return null;
@@ -46,68 +49,71 @@ class Tables extends React.Component {
     }
 
     render(){
-        const {data,isLoaded,code,error} = this.state
+        const {data,isLoaded,code,error,competition} = this.state
         return(
-            <Styles>
-                <Container className="py-5">
-                    <Col md={12} className="mb-3 p-0 border">
-                        <Row>
-                            <Link to={`/tables/${code}`} className="nav-link active">tables</Link>
-                            <Link to={`/fixtures/${code}`} className="nav-link">Fixtures</Link>
-                        </Row>
-                    </Col>
-                    {isLoaded ? 
-                        data.map(result => (
-                            <Row key={result.group}>
-                            <Col md={12}>
-                                <h2 className="group-heading p-3"><strong>{result.stage}</strong> : {result.group}</h2>
-                                <Table  responsive>
-                                    <thead>
-                                        <tr>
-                                        <th>Position</th>
-                                        <th></th>
-                                        <th>Club</th>
-                                        <th>Played</th>
-                                        <th>Won</th>
-                                        <th>Drawn</th>
-                                        <th>Lost</th>
-                                        <th>GF</th>
-                                        <th>GA</th>
-                                        <th>GD</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {
-                                            result.table.map(table=>(
-                                                <tr key={table.position}>
-                                                    <td>{table.position}</td>
-                                                    <td><img src={table.team.crestUrl} width={20} alt="clud_img"/></td>
-                                                    <td>{table.team.name}</td>
-                                                    <td>{table.playedGames}</td>
-                                                    <td>{table.won}</td>
-                                                    <td>{table.draw}</td>
-                                                    <td>{table.lost}</td>
-                                                    <td>{table.goalsFor}</td>
-                                                    <td>{table.goalsAgainst}</td>
-                                                    <td>{table.goalDifference}</td>
-                                                </tr>
-                                            ))
-                                        }
-                                    </tbody>
-                                </Table>
-                            </Col>
-                            <hr/>
-                        </Row>
-                        ))
-                    
-                    : 
-                        error ? 
-                            <p style={{textAlign:'center',color:'#b89120'}}>Kindly check your network or refresh.</p> 
+            <React.Fragment>
+                <Banner competitionName = {competition.competionName} link={competition.competitionLink} code={competition.competitionCode} feature={competition.feature}></Banner> 
+                <Styles>
+                    <Container className="py-5">
+                        <Col md={12} className="mb-3 p-0 border">
+                            <Row>
+                                <Link to={`/tables/${code}`} className="nav-link active">tables</Link>
+                                <Link to={`/fixtures/${code}`} className="nav-link">Fixtures</Link>
+                            </Row>
+                        </Col>
+                        {isLoaded ? 
+                            data.map(result => (
+                                <Row key={result.group}>
+                                <Col md={12}>
+                                    <h2 className="group-heading p-3"><strong>{result.stage}</strong> : {result.group}</h2>
+                                    <Table  responsive>
+                                        <thead>
+                                            <tr>
+                                            <th>Position</th>
+                                            <th></th>
+                                            <th>Club</th>
+                                            <th>Played</th>
+                                            <th>Won</th>
+                                            <th>Drawn</th>
+                                            <th>Lost</th>
+                                            <th>GF</th>
+                                            <th>GA</th>
+                                            <th>GD</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {
+                                                result.table.map(table=>(
+                                                    <tr key={table.position}>
+                                                        <td>{table.position}</td>
+                                                        <td><img src={table.team.crestUrl} width={20} alt="clud_img"/></td>
+                                                        <td>{table.team.name}</td>
+                                                        <td>{table.playedGames}</td>
+                                                        <td>{table.won}</td>
+                                                        <td>{table.draw}</td>
+                                                        <td>{table.lost}</td>
+                                                        <td>{table.goalsFor}</td>
+                                                        <td>{table.goalsAgainst}</td>
+                                                        <td>{table.goalDifference}</td>
+                                                    </tr>
+                                                ))
+                                            }
+                                        </tbody>
+                                    </Table>
+                                </Col>
+                                <hr/>
+                            </Row>
+                            ))
+                        
                         : 
-                            <p style={{textAlign:'center',color:'#b89120'}}>Loading...</p>
-                    }
-                </Container>
-            </Styles>
+                            error ? 
+                                        <p style={{textAlign:'center',color:'#b89120'}}>{error}</p> 
+                            : 
+                                <p style={{textAlign:'center',color:'#b89120'}}>Loading...</p>
+                        }
+                    </Container>
+                </Styles>
+            </React.Fragment>
         );
     }
 }
